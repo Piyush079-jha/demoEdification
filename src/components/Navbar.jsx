@@ -11,9 +11,10 @@ const links = [
 
 const Navbar = () => {
   const [active, setActive] = useState('Home');
-const [searchOpen, setSearchOpen] = useState(false);
-const [searchQuery, setSearchQuery] = useState('');
-const inputRef = useRef(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const inputRef = useRef(null);
 
   const toggleSearch = () => { setSearchOpen(p => !p); setSearchQuery(''); };
   useEffect(() => { if (searchOpen && inputRef.current) inputRef.current.focus(); }, [searchOpen]);
@@ -94,7 +95,35 @@ const inputRef = useRef(null);
           <i className={searchOpen ? 'fas fa-times' : 'fas fa-search'}></i>
         </div>
 
+        {/* Hamburger */}
+        <div
+          onClick={() => setMenuOpen(p => !p)}
+          className="lg:hidden cursor-pointer text-[#555] text-xl hover:text-[#f5a623] transition-colors duration-300 ml-3"
+        >
+          <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+        </div>
+
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="lg:hidden bg-white border-t border-[#eee] px-4 py-4 shadow-md">
+          <ul className="flex flex-col gap-3">
+            {links.map(link => (
+              <li key={link.label}>
+                
+                  href={link.href}
+                  onClick={(e) => { handleClick(e, link); setMenuOpen(false); }}
+                  className={`block font-['Poppins'] text-[13px] font-semibold uppercase tracking-[0.5px] py-1.5 border-b border-[#f5f5f5] transition-colors duration-300
+                    ${active === link.label ? 'text-[#f5a623]' : 'text-[#555] hover:text-[#f5a623]'}`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
