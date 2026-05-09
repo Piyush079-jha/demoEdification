@@ -17,8 +17,16 @@ const Navbar = () => {
   const inputRef = useRef(null);
 
   const toggleSearch = () => { setSearchOpen(p => !p); setSearchQuery(''); };
-  useEffect(() => { if (searchOpen && inputRef.current) inputRef.current.focus(); }, [searchOpen]);
-  useEffect(() => { const h = (e) => { if (e.key === 'Escape') setSearchOpen(false); }; window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h); }, []);
+
+  useEffect(() => {
+    if (searchOpen && inputRef.current) inputRef.current.focus();
+  }, [searchOpen]);
+
+  useEffect(() => {
+    const h = (e) => { if (e.key === 'Escape') setSearchOpen(false); };
+    window.addEventListener('keydown', h);
+    return () => window.removeEventListener('keydown', h);
+  }, []);
 
   const handleClick = (e, link) => {
     e.preventDefault();
@@ -57,18 +65,14 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Links */}
+        {/* Desktop Links */}
         <ul className="hidden lg:flex gap-7">
           {links.map(link => (
             <li key={link.label}>
               <a
                 href={link.href}
                 onClick={(e) => handleClick(e, link)}
-                className={`font-['Poppins'] text-[13px] font-semibold uppercase tracking-[0.5px] pb-1 relative transition-colors duration-300
-                  ${active === link.label
-                    ? 'text-[#f5a623] after:content-[""] after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-[#f5a623] after:rounded-sm'
-                    : 'text-[#555] hover:text-[#f5a623]'
-                  }`}
+                className={`font-['Poppins'] text-[13px] font-semibold uppercase tracking-[0.5px] pb-1 relative transition-colors duration-300 ${active === link.label ? 'text-[#f5a623] after:content-[""] after:absolute after:bottom-[-2px] after:left-0 after:right-0 after:h-[2px] after:bg-[#f5a623] after:rounded-sm' : 'text-[#555] hover:text-[#f5a623]'}`}
               >
                 {link.label}
               </a>
@@ -76,31 +80,34 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Search bar */}
-        {searchOpen && (
-          <div className="flex items-center gap-2 flex-1 mx-8">
-            <input
-              ref={inputRef}
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search courses, topics..."
-              className="w-full border border-[#e5e5e5] rounded-full px-4 py-1.5 text-sm outline-none focus:border-[#f5a623] transition-colors duration-300"
-            />
+        {/* Right side icons */}
+        <div className="flex items-center gap-3">
+          {searchOpen && (
+            <div className="flex items-center gap-2">
+              <input
+                ref={inputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search courses..."
+                className="w-[200px] border border-[#e5e5e5] rounded-full px-4 py-1.5 text-sm outline-none focus:border-[#f5a623] transition-colors duration-300"
+              />
+            </div>
+          )}
+
+          <div
+            onClick={toggleSearch}
+            className="cursor-pointer text-[#555] text-base hover:text-[#f5a623] transition-colors duration-300"
+          >
+            <i className={searchOpen ? 'fas fa-times' : 'fas fa-search'}></i>
           </div>
-        )}
 
-        {/* Search icon */}
-        <div onClick={toggleSearch} className="cursor-pointer text-[#555] text-base hover:text-[#f5a623] transition-colors duration-300 flex-shrink-0">
-          <i className={searchOpen ? 'fas fa-times' : 'fas fa-search'}></i>
-        </div>
-
-        {/* Hamburger */}
-        <div
-          onClick={() => setMenuOpen(p => !p)}
-          className="lg:hidden cursor-pointer text-[#555] text-xl hover:text-[#f5a623] transition-colors duration-300 ml-3"
-        >
-          <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+          <div
+            onClick={() => setMenuOpen(p => !p)}
+            className="lg:hidden cursor-pointer text-[#555] text-xl hover:text-[#f5a623] transition-colors duration-300"
+          >
+            <i className={menuOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+          </div>
         </div>
 
       </div>
@@ -108,14 +115,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-[#eee] px-4 py-4 shadow-md">
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-1">
             {links.map(link => (
               <li key={link.label}>
-                
+                <a
                   href={link.href}
                   onClick={(e) => { handleClick(e, link); setMenuOpen(false); }}
-                  className={`block font-['Poppins'] text-[13px] font-semibold uppercase tracking-[0.5px] py-1.5 border-b border-[#f5f5f5] transition-colors duration-300
-                    ${active === link.label ? 'text-[#f5a623]' : 'text-[#555] hover:text-[#f5a623]'}`}
+                  className={`block font-['Poppins'] text-[13px] font-semibold uppercase tracking-[0.5px] py-2 border-b border-[#f5f5f5] transition-colors duration-300 ${active === link.label ? 'text-[#f5a623]' : 'text-[#555] hover:text-[#f5a623]'}`}
                 >
                   {link.label}
                 </a>
