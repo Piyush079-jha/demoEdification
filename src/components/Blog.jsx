@@ -36,7 +36,7 @@ const Blog = () => {
       <div className="max-w-[1170px] mx-auto px-4">
 
         {/* Header row */}
-        <div className="flex justify-between items-end mb-8">
+        <div className="flex flex-wrap justify-between items-end mb-8 gap-3">
           <div>
             <span className="text-xs text-[#f5a623] font-semibold uppercase tracking-[1px] mb-2 block font-['Poppins']">
               TOP STORIES
@@ -56,7 +56,7 @@ const Blog = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map(post => (
             <div
               key={post.id}

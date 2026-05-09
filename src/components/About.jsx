@@ -3,8 +3,7 @@ import React from 'react';
 const About = () => {
   return (
     <section id="about" className="py-[70px] bg-white">
-      <div className="max-w-[1170px] mx-auto px-4 flex gap-12 items-center">
-
+      <div className="max-w-[1170px] mx-auto px-4 flex flex-col lg:flex-row gap-12 items-center">
         {/* Text */}
         <div className="flex-1">
           <span className="text-xs text-[#f5a623] font-semibold uppercase tracking-[1px] mb-2 block font-['Poppins']">

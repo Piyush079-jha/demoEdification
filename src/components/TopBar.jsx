@@ -3,7 +3,7 @@ import React from 'react';
 const TopBar = () => {
   return (
     <div className="bg-[#2c2c3e] text-[#ccc] text-xs py-1.5">
-      <div className="max-w-[1170px] mx-auto px-4 flex justify-between items-center">
+      <div className="max-w-[1170px] mx-auto px-4 flex flex-wrap justify-between items-center gap-2">
 
         {/* Left side contact info */}
         <div className="flex gap-5">

@@ -25,8 +25,8 @@ const Hero = () => {
       {/* Content */}
       <div className="max-w-[1170px] mx-auto px-4 py-20 relative z-10">
         <div className="max-w-[520px]">
-          <span className="text-[#ccc] text-sm font-['Poppins'] block mb-3">— ADMISSION '26</span>
-          <h1 className="text-[42px] font-extrabold text-white leading-tight mb-4 uppercase">
+          <span className="text-[#ccc] text-sm font-['Poppins'] block mb-3">— ADMISSION    2026</span>
+          <h1 className="text-[28px] sm:text-[36px] md:text-[42px] font-extrabold text-white leading-tight mb-4 uppercase">
             YOUR BRIGHT FUTURE<br />
             <span className="text-[#f5a623]">IS OUR MISSION</span>
           </h1>

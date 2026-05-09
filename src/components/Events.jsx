@@ -18,7 +18,7 @@ const Events = () => {
           Upcoming Events to
         </h2>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {events.map(e => (
             <div
               key={e.id}

@@ -57,7 +57,7 @@ const inputRef = useRef(null);
         </div>
 
         {/* Links */}
-        <ul className="flex gap-7">
+        <ul className="hidden lg:flex gap-7">
           {links.map(link => (
             <li key={link.label}>
               <a

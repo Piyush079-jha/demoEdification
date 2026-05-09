@@ -8,7 +8,7 @@ const scrollTo = (id) => (e) => {
 const Footer = () => {
   return (
     <footer id="contact" className="bg-[#1a1a2e] text-[#aaa] pt-12">
-      <div className="max-w-[1170px] mx-auto px-4 grid grid-cols-[1.5fr_1fr_1.2fr] gap-10 pb-10">
+      <div className="max-w-[1170px] mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 pb-10">
 
         {/* Brand column */}
         <div>
